@@ -121,17 +121,105 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 		
 		this.getChildren().addAll(sp, gd);
 	}
-
-	@Override
-	public void handle(ActionEvent event) {
-		
-		Button b = (Button) event.getSource();
-		String value = b.getText();
-		
-		
-	}
-
-
 	
+	public String numero(String n) {
+		if (number1.isEmpty()) {
+			number1 = n;
+		}
+		else {
+			number2 = n;
+		}
+		return number1 + operator + number2;
+	}
+	
+	public String operador(String o) {
+		operator = o;
+		return number1 + operator + number2;
+	}
+	
+    public float operacion(String s){
+        float n1 = Character.getNumericValue(s.charAt(0));
+        float n2 = Character.getNumericValue(s.charAt(2));
+        switch (s.charAt(1)) {
+            case '*':
+                return n1*n2;
+            case '/':
+                return n1/n2;
+            case '+':
+                return n1 + n2;
+            case '-':
+                return n1-n2;
+            default:
+                return 0;
+        }
+    }
+
+
+@Override
+public void handle(ActionEvent event) {
+	
+	Button b = (Button) event.getSource();
+	String value = b.getText();
+	
+        switch (value) {
+            case "0":
+                displayText.setText(numero(value));
+                break;
+            case "1":
+                displayText.setText(numero(value));
+                break;
+            case "2":
+                displayText.setText(numero(value));
+                break;
+            case "3":
+                displayText.setText(numero(value));
+                break;
+            case "4":
+                displayText.setText(numero(value));
+                break;
+            case "5":
+                displayText.setText(numero(value));
+                break;
+            case "6":
+                displayText.setText(numero(value));
+                break;
+            case "7":
+                displayText.setText(numero(value));
+                break;
+            case "8":
+                displayText.setText(numero(value));
+                break;
+            case "9":
+                displayText.setText(numero(value));
+                break;
+            case "/":
+                displayText.setText(operador(value));
+                break;
+            case "*":
+                displayText.setText(operador(value));
+                break;
+            case "+":
+                displayText.setText(operador(value));
+                break;
+            case "-":
+                displayText.setText(operador(value));
+                break;
+            case "=":
+                displayText.setText(Float.toString(operacion(displayText.getText())));
+                number1 = "";
+                number2 = "";
+                operator = "";
+                break;
+            case "C":
+                number1 = "";
+                number2 = "";
+                operator = "";
+                displayText.setText("");
+                break;
+            default:
+                break;
+        }
+	
+}
 
 }
